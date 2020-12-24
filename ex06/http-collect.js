@@ -6,7 +6,7 @@
 /*   By: ywake <ywake@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 18:48:07 by ywake             #+#    #+#             */
-/*   Updated: 2020/12/23 19:33:06 by ywake            ###   ########.fr       */
+/*   Updated: 2020/12/24 22:01:17 by ywake            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ if (process.argv.length == 3)
 {
 	try {
 		http.get(process.argv[2], (res) => {
-			res.setEncoding("utf-8");
 			let rawData = '';
 			res.on('data', (chunk) => {
 				rawData += chunk;
@@ -25,8 +24,13 @@ if (process.argv.length == 3)
 				console.log(rawData.length);
 				console.log(rawData);
 			});
+			res.on('error', (err) => {
+				console.error(err.message);
+			});
+		}).on('error', (err) => {
+			console.error(err.message);
 		});
 	} catch (error) {
-
+		console.error(error.message);
 	}
 }
