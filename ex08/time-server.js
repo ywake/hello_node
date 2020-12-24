@@ -6,7 +6,7 @@
 /*   By: ywake <ywake@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 02:34:26 by ywake             #+#    #+#             */
-/*   Updated: 2020/12/24 22:17:21 by ywake            ###   ########.fr       */
+/*   Updated: 2020/12/24 22:43:06 by ywake            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ const server = net.createServer((conn) => {
 	conn.on('close', () => {
 		// console.log("closed connection");
 	});
-	conn.on("error", (err) => {
-		console.log(err.message);
+	conn.on('error', (err) => {
+		console.error(err.message);
 	});
 }).on('error', (err) => {
 	console.error(err.message);
