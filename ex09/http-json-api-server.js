@@ -6,7 +6,7 @@
 /*   By: ywake <ywake@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 22:20:09 by ywake             #+#    #+#             */
-/*   Updated: 2020/12/25 02:53:12 by ywake            ###   ########.fr       */
+/*   Updated: 2020/12/25 03:09:46 by ywake            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ const server = http.createServer((req, res) => {
 			res.end("404 Not Found\n");
 		}
 	}
+	res.on('error', (err) => {
+		console.log(err.message);
+	});
 
 	let url = urlParser.parse(req.url);
 	if (req.method === "GET") {
