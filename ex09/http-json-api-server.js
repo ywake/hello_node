@@ -6,7 +6,7 @@
 /*   By: ywake <ywake@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 22:20:09 by ywake             #+#    #+#             */
-/*   Updated: 2020/12/25 03:09:46 by ywake            ###   ########.fr       */
+/*   Updated: 2020/12/25 16:12:32 by ywake            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ function parseTime(query) {
 function parseIso(isoString) {
 	let time = new Date(isoString);
 	let resObj = {
-		"hour": time.getHours(),
+		"hour": time.getUTCHours(),
 		"minute": time.getMinutes(),
 		"second": time.getSeconds()
 	};
