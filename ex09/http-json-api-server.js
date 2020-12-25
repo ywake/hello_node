@@ -6,14 +6,14 @@
 /*   By: ywake <ywake@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 22:20:09 by ywake             #+#    #+#             */
-/*   Updated: 2020/12/25 16:12:32 by ywake            ###   ########.fr       */
+/*   Updated: 2020/12/25 19:30:12 by ywake            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 const http = require("http");
 const urlParser = require("url");
 
-const host = "127.0.0.1"
+const host = "127.0.0.1";
 
 const server = http.createServer((req, res) => {
 	const Response = {
@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
 		}
 	}
 	res.on('error', (err) => {
-		console.log(err.message);
+		console.error(err.message);
 	});
 
 	let url = urlParser.parse(req.url);
@@ -69,6 +69,8 @@ function parseQuery(query) {
 }
 
 function parseTime(query) {
+	if (!query)
+		return "";
 	let params = parseQuery(query);
 	let msg = "";
 	for (const [key, value] of params) {
@@ -98,6 +100,8 @@ function parseIso(isoString) {
 }
 
 function unixTime(query) {
+	if (!query)
+		return "";
 	let params = parseQuery(query);
 	let msg = "";
 	for (const [key, value] of params) {
